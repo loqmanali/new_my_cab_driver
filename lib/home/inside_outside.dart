@@ -1,5 +1,6 @@
 import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
+import 'package:my_cab_driver/Language/appLocalizations.dart';
 import 'package:my_cab_driver/constance/constance.dart';
 import 'package:my_cab_driver/controllers/user_data_provider.dart';
 import 'package:my_cab_driver/main.dart';
@@ -32,7 +33,6 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
         AppBar().preferredSize.height + MediaQuery.of(context).padding.top + 20;
 
     return Scaffold(
-
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: Container(
@@ -86,7 +86,7 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
                                   child: Align(
                                     alignment: Alignment.topRight,
                                     child: Text(
-                                      "المنطقة",
+                                      "${AppLocalizations.of("Location")}",
                                       style: headLineStyle.copyWith(
                                           color: Colors.white, fontSize: 40.0),
                                     ),
@@ -101,7 +101,7 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  "يجب تحديد المنطقة",
+                                  "${AppLocalizations.of("The Area Must Be Determined")}",
                                   style: describtionStyle.copyWith(
                                     color: Colors.white,
                                     fontSize: 20.0,
@@ -113,7 +113,6 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
                                     this._userDataProvider.inSide = true;
                                     data.getInside("1");
                                     Navigator.pushNamed(context, Routes.HOME);
-
                                   },
                                   child: Container(
                                     width: double.infinity,
@@ -126,7 +125,7 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
                                       color: Colors.white,
                                     ),
                                     child: Text(
-                                      "داخلي",
+                                      "${AppLocalizations.of("Inside")}",
                                       style: headLineStyle.copyWith(
                                         color: Colors.blue,
                                         fontWeight: FontWeight.normal,
@@ -154,7 +153,8 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
                                       color: Colors.white,
                                     ),
                                     child: Text(
-                                      "خارجي",
+                                      
+                                      "${AppLocalizations.of("Outside")}",
                                       style: headLineStyle.copyWith(
                                         color: Colors.blue,
                                         fontWeight: FontWeight.normal,

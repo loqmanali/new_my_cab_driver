@@ -450,24 +450,15 @@ class _SettingScreenState extends State<SettingScreen> {
               SizedBox(
                 width: 16,
               ),
-              FutureBuilder(
-                  future: data.getDriverDetails(context),
-                  builder: (context, AsyncSnapshot<DriverInfo> snapshot) {
-                    if (snapshot.data == null) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          snapshot.data.name,
-                          style: headLineStyle.copyWith(fontSize: 20.0),
-                        ),
-                      ],
-                    );
-                  }),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "${this._userDataProvider.name}",
+                    style: headLineStyle.copyWith(fontSize: 20.0),
+                  ),
+                ],
+              ),
               Expanded(child: SizedBox()),
               Icon(
                 Icons.arrow_forward_ios,

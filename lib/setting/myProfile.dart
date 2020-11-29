@@ -84,31 +84,23 @@ class _MyProfileState extends State<MyProfile> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  FutureBuilder(
-                    future: data.getDriverDetails(context),
-                    builder: (context, AsyncSnapshot<DriverInfo> snapshot) {
-                      if (snapshot.data == null) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          this._userImage(context),
-                          SizedBox(height: 10.0),
-                          Text(
-                            snapshot.data.name,
-                            style: headLineStyle.copyWith(fontSize: 15.0),
-                          ),
-                          Text(
-                            'Gold Member',
-                            style: describtionStyle.copyWith(
-                              color: Colors.black38,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      );
-                    },
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      this._userImage(context),
+                      SizedBox(height: 10.0),
+                      Text(
+                        "${this._userDataProvider.name}",
+                        style: headLineStyle.copyWith(fontSize: 15.0),
+                      ),
+                      // Text(
+                      //   'Gold Member',
+                      //   style: describtionStyle.copyWith(
+                      //     color: Colors.black38,
+                      //     fontWeight: FontWeight.bold,
+                      //   ),
+                      // ),
+                    ],
                   ),
                 ],
               ),
@@ -442,13 +434,11 @@ class _MyProfileState extends State<MyProfile> {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Container(
-                  height: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
+                // Container(
+                //   height: 1,
+                //   color: Theme.of(context).dividerColor,
+                // ),
+                SizedBox(height: 8),
                 InkWell(
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
@@ -480,34 +470,34 @@ class _MyProfileState extends State<MyProfile> {
                 SizedBox(
                   height: 8,
                 ),
-                InkWell(
-                  highlightColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    selectLanguage('fr');
-                    Navigator.of(context).pop();
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of('French'),
-                        style: Theme.of(context).textTheme.subtitle.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).disabledColor,
-                              fontSize: 16,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Container(
-                  height: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
+                // InkWell(
+                //   highlightColor: Colors.transparent,
+                //   splashColor: Colors.transparent,
+                //   onTap: () {
+                //     selectLanguage('fr');
+                //     Navigator.of(context).pop();
+                //   },
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: <Widget>[
+                //       Text(
+                //         AppLocalizations.of('French'),
+                //         style: Theme.of(context).textTheme.subtitle.copyWith(
+                //               fontWeight: FontWeight.bold,
+                //               color: Theme.of(context).disabledColor,
+                //               fontSize: 16,
+                //             ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: 8,
+                // ),
+                // Container(
+                //   height: 1,
+                //   color: Theme.of(context).dividerColor,
+                // ),
                 SizedBox(
                   height: 8,
                 ),
@@ -535,34 +525,34 @@ class _MyProfileState extends State<MyProfile> {
                 SizedBox(
                   height: 8,
                 ),
-                Container(
-                  height: 1,
-                  color: Theme.of(context).dividerColor,
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                InkWell(
-                  highlightColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    selectLanguage('ja');
-                    Navigator.of(context).pop();
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of('Japanese'),
-                        style: Theme.of(context).textTheme.subtitle.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).disabledColor,
-                              fontSize: 16,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
+                // Container(
+                //   height: 1,
+                //   color: Theme.of(context).dividerColor,
+                // ),
+                // SizedBox(
+                //   height: 8,
+                // ),
+                // InkWell(
+                //   highlightColor: Colors.transparent,
+                //   splashColor: Colors.transparent,
+                //   onTap: () {
+                //     selectLanguage('ja');
+                //     Navigator.of(context).pop();
+                //   },
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: <Widget>[
+                //       Text(
+                //         AppLocalizations.of('Japanese'),
+                //         style: Theme.of(context).textTheme.subtitle.copyWith(
+                //               fontWeight: FontWeight.bold,
+                //               color: Theme.of(context).disabledColor,
+                //               fontSize: 16,
+                //             ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           );

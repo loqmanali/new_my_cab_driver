@@ -60,45 +60,33 @@ class _AppDrawerState extends State<AppDrawer> {
                               image: (this._userDataProvider.imageUrl == null)
                                   ? AssetImage("assets/profile_icon.png")
                                   : NetworkImage(
-                                  "${this._userDataProvider.imageUrl}"),
+                                      "${this._userDataProvider.imageUrl}"),
                             ),
                           ),
                         ),
-
                         SizedBox(
                           width: 8,
                         ),
-                        FutureBuilder(
-                          future: data.getDriverDetails(context),
-                          builder:
-                              (context, AsyncSnapshot<DriverInfo> snapshot) {
-                            if (snapshot.data == null) {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  snapshot.data.name,
-                                  style: headLineStyle.copyWith(
-                                      fontSize: 16.0, color: Colors.white),
-                                ),
-                                SizedBox(
-                                  height: 4,
-                                ),
-                                Text(
-                                  "+02 ${snapshot.data.phone}",
-                                  style: describtionStyle.copyWith(
-                                    fontSize: 14.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "${this._userDataProvider.name}",
+                              style: headLineStyle.copyWith(
+                                  fontSize: 16.0, color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              "+02 ${this._userDataProvider.phone}",
+                              style: describtionStyle.copyWith(
+                                fontSize: 14.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -107,110 +95,110 @@ class _AppDrawerState extends State<AppDrawer> {
                     flex: 1,
                     child: SizedBox(),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.clock,
-                            color: ConstanceData.secoundryFontColor,
-                            size: 18,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            '00.00',
-                            style: describtionStyle.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                AppLocalizations.of('Hourse online'),
-                                style: describtionStyle.copyWith(
-                                    fontSize: 13.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.tachometerAlt,
-                            color: Colors.white,
-                            size: 18,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            '00.00 KM',
-                            style: describtionStyle.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                AppLocalizations.of('Total Distance'),
-                                style: describtionStyle.copyWith(
-                                    fontSize: 13.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Icon(
-                            FontAwesomeIcons.rocket,
-                            color: ConstanceData.secoundryFontColor,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            '00.00',
-                            style: describtionStyle.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                AppLocalizations.of('Total Job'),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption
-                                    .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: ConstanceData.secoundryFontColor,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  )
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   children: <Widget>[
+                  //     Column(
+                  //       children: <Widget>[
+                  //         Icon(
+                  //           FontAwesomeIcons.clock,
+                  //           color: ConstanceData.secoundryFontColor,
+                  //           size: 18,
+                  //         ),
+                  //         SizedBox(
+                  //           height: 4,
+                  //         ),
+                  //         Text(
+                  //           '00.00',
+                  //           style: describtionStyle.copyWith(
+                  //               color: Colors.white,
+                  //               fontWeight: FontWeight.bold),
+                  //         ),
+                  //         Row(
+                  //           children: <Widget>[
+                  //             Text(
+                  //               AppLocalizations.of('Hourse online'),
+                  //               style: describtionStyle.copyWith(
+                  //                   fontSize: 13.0,
+                  //                   color: Colors.white,
+                  //                   fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     Column(
+                  //       children: <Widget>[
+                  //         Icon(
+                  //           FontAwesomeIcons.tachometerAlt,
+                  //           color: Colors.white,
+                  //           size: 18,
+                  //         ),
+                  //         SizedBox(
+                  //           height: 4,
+                  //         ),
+                  //         Text(
+                  //           '00.00 KM',
+                  //           style: describtionStyle.copyWith(
+                  //               color: Colors.white,
+                  //               fontWeight: FontWeight.bold),
+                  //         ),
+                  //         Row(
+                  //           children: <Widget>[
+                  //             Text(
+                  //               AppLocalizations.of('Total Distance'),
+                  //               style: describtionStyle.copyWith(
+                  //                   fontSize: 13.0,
+                  //                   color: Colors.white,
+                  //                   fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     Column(
+                  //       children: <Widget>[
+                  //         Icon(
+                  //           FontAwesomeIcons.rocket,
+                  //           color: ConstanceData.secoundryFontColor,
+                  //           size: 20,
+                  //         ),
+                  //         SizedBox(
+                  //           height: 4,
+                  //         ),
+                  //         Text(
+                  //           '00.00',
+                  //           style: describtionStyle.copyWith(
+                  //               color: Colors.white,
+                  //               fontWeight: FontWeight.bold),
+                  //         ),
+                  //         Row(
+                  //           children: <Widget>[
+                  //             Text(
+                  //               AppLocalizations.of('Total Job'),
+                  //               style: Theme.of(context)
+                  //                   .textTheme
+                  //                   .caption
+                  //                   .copyWith(
+                  //                     fontWeight: FontWeight.bold,
+                  //                     color: ConstanceData.secoundryFontColor,
+                  //                   ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(
+                  //   height: 8,
+                  // )
                 ],
               ),
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: columDetail(),
           )
         ],
@@ -290,42 +278,42 @@ class _AppDrawerState extends State<AppDrawer> {
               SizedBox(
                 height: 32,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                  if (widget.selectItemName != 'Wallet') {
-                    Navigator.pushNamedAndRemoveUntil(context, Routes.WALLET,
-                        (Route<dynamic> route) => false);
-                  }
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 4),
-                  child: Row(
-                    children: <Widget>[
-                      widget.selectItemName == 'Wallet'
-                          ? selectedData()
-                          : SizedBox(),
-                      Icon(
-                        FontAwesomeIcons.wallet,
-                        size: 20,
-                        color: staticGreenColor.withOpacity(0.6),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        AppLocalizations.of('Wallet'),
-                        style: headLineStyle.copyWith(
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 32,
-              ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.pop(context);
+              //     if (widget.selectItemName != 'Wallet') {
+              //       Navigator.pushNamedAndRemoveUntil(context, Routes.WALLET,
+              //           (Route<dynamic> route) => false);
+              //     }
+              //   },
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(left: 4),
+              //     child: Row(
+              //       children: <Widget>[
+              //         widget.selectItemName == 'Wallet'
+              //             ? selectedData()
+              //             : SizedBox(),
+              //         Icon(
+              //           FontAwesomeIcons.wallet,
+              //           size: 20,
+              //           color: staticGreenColor.withOpacity(0.6),
+              //         ),
+              //         SizedBox(
+              //           width: 10,
+              //         ),
+              //         Text(
+              //           AppLocalizations.of('Wallet'),
+              //           style: headLineStyle.copyWith(
+              //             fontSize: 16.0,
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 32,
+              // ),
               InkWell(
                 onTap: () {
                   Navigator.pop(context);
