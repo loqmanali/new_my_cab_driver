@@ -153,7 +153,7 @@ class _InsideAndOutSideState extends State<InsideAndOutSide> {
                                       color: Colors.white,
                                     ),
                                     child: Text(
-                                      
+
                                       "${AppLocalizations.of("Outside")}",
                                       style: headLineStyle.copyWith(
                                         color: Colors.blue,
