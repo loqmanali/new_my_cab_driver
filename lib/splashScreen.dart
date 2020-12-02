@@ -16,6 +16,40 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  Future<bool> oldVersion(BuildContext context) async {
+    bool oldV = true;
+    try {
+      http.Response res = await http
+          .get("https://gardentaxi.net/Back_End/public/api/app/version");
+      Map<String, dynamic> data =
+      Map<String, dynamic>.from(json.decode(res.body));
+
+      if (data['data'][0]['value'] == "1.0.0+1") {
+        oldV = false;
+      } else {
+        print("old version");
+        oldV = true;
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return WillPopScope(
+                onWillPop: () async {
+                  return false;
+                },
+                child: AlertDialog(
+                  title: Text("عذرا"),
+                  content: Text("هذا الإصدار قديم يرجى تحديث الاصدار"),
+                ),
+              );
+            });
+      }
+    } catch (e) {
+      print("Exception in CheckVersionMethod : $e");
+    }
+    return oldV;
+  }
+
   @override
   void initState() {
     myContext = context;
@@ -28,19 +62,22 @@ class _SplashScreenState extends State<SplashScreen> {
   BuildContext myContext;
 
   _loadNextScreen() async {
-    await Firebase.initializeApp();
-    SharedPreferenceService prefsService = new SharedPreferenceService();
-    Map<String, dynamic> data = await prefsService.getUserData();
-    if (data != null) this._userDataProvider.initialData(data);
+    bool oldV = oldVersion(context);
+    if (!oldV) {
+      await Firebase.initializeApp();
+      SharedPreferenceService prefsService = new SharedPreferenceService();
+      Map<String, dynamic> data = await prefsService.getUserData();
+      if (data != null) this._userDataProvider.initialData(data);
 
-    if (!mounted) return;
-    if (constance.allTextData == null) {
-      constance.allTextData = AllTextData.fromJson(json.decode(
-          await DefaultAssetBundle.of(myContext)
-              .loadString("jsonFile/languagetext.json")));
+      if (!mounted) return;
+      if (constance.allTextData == null) {
+        constance.allTextData = AllTextData.fromJson(json.decode(
+            await DefaultAssetBundle.of(myContext)
+                .loadString("jsonFile/languagetext.json")));
+      }
+      await Future.delayed(const Duration(milliseconds: 1200));
+      Navigator.pushReplacementNamed(context, Routes.Languages);
     }
-    await Future.delayed(const Duration(milliseconds: 1200));
-    Navigator.pushReplacementNamed(context, Routes.Languages);
   }
 
   UserDataProvider _userDataProvider;
@@ -53,7 +90,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Scaffold(
       body: Center(
         child: Stack(
