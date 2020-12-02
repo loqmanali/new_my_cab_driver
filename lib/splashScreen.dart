@@ -9,6 +9,7 @@ import 'package:my_cab_driver/introduction/introductionScreen.dart';
 import 'package:my_cab_driver/constance/constance.dart' as constance;
 import 'package:my_cab_driver/main.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class SplashScreen extends StatefulWidget {
   @override
