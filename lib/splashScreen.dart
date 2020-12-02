@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
   BuildContext myContext;
 
   _loadNextScreen() async {
-    bool oldV = oldVersion(context);
+    bool oldV = await oldVersion(context);
     if (!oldV) {
       await Firebase.initializeApp();
       SharedPreferenceService prefsService = new SharedPreferenceService();
