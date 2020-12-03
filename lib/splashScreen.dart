@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:my_cab_driver/Language/LanguageData.dart';
 import 'package:my_cab_driver/controllers/shared_preference.dart';
 import 'package:my_cab_driver/controllers/user_data_provider.dart';
-import 'package:my_cab_driver/introduction/introductionScreen.dart';
 import 'package:my_cab_driver/constance/constance.dart' as constance;
 import 'package:my_cab_driver/main.dart';
 import 'package:provider/provider.dart';
